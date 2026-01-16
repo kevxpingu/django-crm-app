@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Poetry
+.venv/
+bin/
+lib/
+
+# Django
+db.sqlite3
+.env
+media/
+
+# Editor
+.vscode/

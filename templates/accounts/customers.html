@@ -1,0 +1,61 @@
+{% extends "accounts/main.html" %}
+
+{% block content %}
+<body class="bg-gray-200 font-sans">
+
+    <div class="container mx-auto mt-8 px-4">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+            <div class="bg-white p-6 rounded shadow-sm">
+                <h3 class="text-xl font-bold mb-4">Customer:</h3>
+                <div class="space-y-3">
+                    <button
+                        class="w-full border border-cyan-500 text-cyan-600 py-2 rounded hover:bg-cyan-50 transition">
+                        Update Customer
+                    </button>
+                    <button class="w-full border border-red-300 text-red-500 py-2 rounded hover:bg-red-50 transition">
+                        Delete Customer
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded shadow-sm">
+                <h3 class="text-xl font-bold mb-4 border-b pb-2">Contact Information</h3>
+                <p class="mb-2"><span class="font-medium text-gray-600">Email:</span></p>
+                <p><span class="font-medium text-gray-600">Phone:</span></p>
+            </div>
+
+            <div class="bg-white p-6 rounded shadow-sm">
+                <h3 class="text-xl font-bold mb-4 border-b pb-2">Total Orders</h3>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow-sm mb-6">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded shadow-sm">
+                Search
+            </button>
+        </div>
+
+        <div class="bg-white rounded shadow-sm overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-white border-b">
+                    <tr>
+                        <th class="p-4 font-bold text-gray-800">Product</th>
+                        <th class="p-4 font-bold text-gray-800">Category</th>
+                        <th class="p-4 font-bold text-gray-800">Date Orderd</th>
+                        <th class="p-4 font-bold text-gray-800">Status</th>
+                        <th class="p-4 font-bold text-gray-800 text-center">Update</th>
+                        <th class="p-4 font-bold text-gray-800 text-center">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b last:border-0">
+                        <td colspan="6" class="p-10"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
