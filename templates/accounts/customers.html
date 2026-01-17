@@ -22,12 +22,15 @@
 
             <div class="bg-white p-6 rounded shadow-sm">
                 <h3 class="text-xl font-bold mb-4 border-b pb-2">Contact Information</h3>
-                <p class="mb-2"><span class="font-medium text-gray-600">Email:</span></p>
-                <p><span class="font-medium text-gray-600">Phone:</span></p>
+                <p class="mb-2"><span class="font-medium text-gray-600">Email: {{customer.email}}</span></p>
+                <p><span class="font-medium text-gray-600">Phone: {{customer.phone}}</span></p>
             </div>
 
             <div class="bg-white p-6 rounded shadow-sm">
                 <h3 class="text-xl font-bold mb-4 border-b pb-2">Total Orders</h3>
+                <div>
+                    <p>{{total_order}}</p>
+                </div>
             </div>
         </div>
 
@@ -38,21 +41,28 @@
         </div>
 
         <div class="bg-white rounded shadow-sm overflow-hidden">
-            <table class="w-full text-left">
+            <table class="w-full">
                 <thead class="bg-white border-b">
                     <tr>
                         <th class="p-4 font-bold text-gray-800">Product</th>
                         <th class="p-4 font-bold text-gray-800">Category</th>
                         <th class="p-4 font-bold text-gray-800">Date Orderd</th>
                         <th class="p-4 font-bold text-gray-800">Status</th>
-                        <th class="p-4 font-bold text-gray-800 text-center">Update</th>
-                        <th class="p-4 font-bold text-gray-800 text-center">Remove</th>
+                        <th class="p-4 font-bold text-gray-800">Update</th>
+                        <th class="p-4 font-bold text-gray-800">Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b last:border-0">
-                        <td colspan="6" class="p-10"></td>
+                    {% for order in orders %}
+                    <tr class="border-b last:border-0 text-center">
+                        <td class="p-10">{{order.product}}</td>
+                        <td class="p-10">{{order.product.category}}</td>
+                        <td class="p-10">{{order.date_created}}</td>
+                        <td class="p-10">{{order.status}}</td>
+                        <td class="p-10"><a href="#">Update</a></td>
+                        <td class="p-10"><a href="#">Remove</a></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
