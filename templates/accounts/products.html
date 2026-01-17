@@ -21,9 +21,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for product in products %}
                         <tr class="border-b last:border-0">
-                            <td colspan="3" class="p-12"></td>
+                            
+                            <td  class="p-6">{{product.name}}</td>
+                            <td  class="p-6">{{product.category}}</td>
+                            <td  class="p-6">{{product.price}}</td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
