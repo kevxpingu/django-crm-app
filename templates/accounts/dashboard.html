@@ -19,13 +19,16 @@
                         <thead class="border-b">
                             <tr>
                                 <th class="pb-2 font-bold">Customer</th>
-                                <th class="pb-2 font-bold text-right">Orders</th>
+                                <th class="pb-2 font-bold">Phones</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for customer in customers %}
                             <tr>
-                                <td class="py-2 text-gray-500 italic" colspan="2">No customers found...</td>
+                                <td class="py-2 text-gray-500 italic">{{customer.name}}</td>
+                                <td class="py-2 text-gray-500 italic" colspan="2">{{customer.phone}}</td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -37,7 +40,7 @@
                     <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded mb-4 transition">
                         Create Order
                     </button>
-                    <table class="w-full text-left text-sm lg:text-base">
+                    <table class="w-full text-sm lg:text-base">
                         <thead class="border-b">
                             <tr>
                                 <th class="pb-2 font-bold">Product</th>
@@ -48,9 +51,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for order in orders %}
                             <tr>
-                                <td class="py-4 text-center text-gray-400" colspan="5">No recent orders.</td>
+                                <td class="py-4 text-center text-gray-400">{{order.product}}</td>
+                                <td class="py-4 text-center text-gray-400">{{order.date_created}}</td>
+                                <td class="py-4 text-center text-gray-400">{{order.status}}</td>
+                                <td class="py-4 text-center text-gray-400"><a href="#">Update</a></td>
+                                <td class="py-4 text-center text-gray-400"><a href="#">Remove</a></td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
