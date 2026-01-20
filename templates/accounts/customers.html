@@ -59,8 +59,10 @@
                         <td class="p-10">{{order.product.category}}</td>
                         <td class="p-10">{{order.date_created}}</td>
                         <td class="p-10">{{order.status}}</td>
-                        <td class="p-10"><a href="#">Update</a></td>
-                        <td class="p-10"><a href="#">Remove</a></td>
+                        <td class="py-4 text-center text-gray-400"><a href="{% url 'update_order' order.id %}"
+                                class="bg-green-500 px-3 py-2 rounded-lg text-green-200">Update</a></td>
+                        <td class="py-4 text-center text-gray-400"><a href="{% url 'delete_order' order.id%}"
+                                class="bg-red-500 px-3 py-2 rounded-lg text-red-200">Remove</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

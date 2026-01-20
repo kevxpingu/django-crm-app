@@ -18,6 +18,7 @@
                     <table class="w-full text-left">
                         <thead class="border-b">
                             <tr>
+                                <th></th>
                                 <th class="pb-2 font-bold">Customer</th>
                                 <th class="pb-2 font-bold">Phones</th>
                             </tr>
@@ -25,6 +26,7 @@
                         <tbody>
                             {% for customer in customers %}
                             <tr>
+                                <td class="text-center"><a href="{% url 'customers' customer.id %}" class="bg-blue-500 px-4 py-2 text-blue-200 font-bold rounded-lg">View</a></td>
                                 <td class="py-2 text-gray-500 italic">{{customer.name}}</td>
                                 <td class="py-2 text-gray-500 italic" colspan="2">{{customer.phone}}</td>
                             </tr>
@@ -37,9 +39,11 @@
             <div>
                 <h2 class="text-xl font-bold mb-4 uppercase tracking-wider">Last 5 Orders</h2>
                 <div class="bg-white p-4 rounded-lg shadow-sm">
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded mb-4 transition">
-                        Create Order
-                    </button>
+                    <a href="{% url 'create_order' %}">
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded mb-4 transition">
+                            Create Order
+                        </button>
+                    </a>
                     <table class="w-full text-sm lg:text-base">
                         <thead class="border-b">
                             <tr>
@@ -56,8 +60,8 @@
                                 <td class="py-4 text-center text-gray-400">{{order.product}}</td>
                                 <td class="py-4 text-center text-gray-400">{{order.date_created}}</td>
                                 <td class="py-4 text-center text-gray-400">{{order.status}}</td>
-                                <td class="py-4 text-center text-gray-400"><a href="#">Update</a></td>
-                                <td class="py-4 text-center text-gray-400"><a href="#">Remove</a></td>
+                                <td class="py-4 text-center text-gray-400"><a href="{% url 'update_order' order.id %}" class="bg-green-500 px-3 py-2 rounded-lg text-green-200">Update</a></td>
+                                <td class="py-4 text-center text-gray-400"><a href="{% url 'delete_order' order.id%}" class="bg-red-500 px-3 py-2 rounded-lg text-red-200">Remove</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
