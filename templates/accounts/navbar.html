@@ -27,6 +27,11 @@
                             class="rounded-md px-4 py-2 text-base font-semibold text-gray-300 hover:bg-white/5 hover:text-white transition-all">Products</a>
                     </div>
                 </div>
+
+                <div class="flex space-x-8 text-gray-200">
+                    <p class="font-bold">Hello, {{request.user}}</p>
+                    <a class="font-bold" href="{% url 'logout'%}">Logout</a>
+                </div>
             </div>
 
         </div>
