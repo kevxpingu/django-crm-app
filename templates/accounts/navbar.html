@@ -19,6 +19,7 @@
                         class="h-35 w-auto object-contain block" />
                 </div>
 
+                {% if request.user.is_staff %}
                 <div class="hidden sm:ml-12 sm:block">
                     <div class="flex space-x-8 items-center">
                         <a href="{% url 'home' %}"
@@ -27,6 +28,7 @@
                             class="rounded-md px-4 py-2 text-base font-semibold text-gray-300 hover:bg-white/5 hover:text-white transition-all">Products</a>
                     </div>
                 </div>
+                {% endif %}
 
                 <div class="flex space-x-8 text-gray-200">
                     <p class="font-bold">Hello, {{request.user}}</p>
