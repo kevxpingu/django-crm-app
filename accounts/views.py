@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import orderForm, createUserForm
+from .forms import orderForm, createUserForm, customerForm
 from .filters import orderFilter
 from django.contrib import messages
 from django.contrib.auth.models import Group
@@ -20,15 +20,40 @@ def registerPage(request):
             username = form.cleaned_data.get("username")
             group = Group.objects.get(name="customer")
             user.groups.add(group)
+            Customer.objects.add(
+                user=user,
+            )
+
+
             messages.success(request, "Account successfully created for " + username)
             return redirect('login')
 
     context = {'form': form}
     return render(request, "accounts/register.html", context)
 
+@login_required(login_url="login")
+@allowed_users(allowed_roles='customer')
 def userPage(request):
-    context = {}
+    orders = request.user.customer.order_set.all()
+    total_orders = orders.count()
+    orders_delivered = orders.filter(status="Delivered").count()
+    orders_pending = orders.filter(status="Pending").count()
+    context = {'orders': orders,
+               'total_orders': total_orders,
+               'orders_delivered': orders_delivered,
+               'orders_pending': orders_pending}
     return render(request, "accounts/user_page.html", context)
+
+def accountSettings(request):
+    customer = request.user.customer
+    form = customerForm(instance=customer)
+
+    if request.method == "POST":
+        form = customerForm(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+    context = {"form": form}
+    return render(request, 'accounts/account_settings.html', context)
 
 @unauthenticated_user
 def loginPage(request):

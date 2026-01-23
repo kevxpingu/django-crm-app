@@ -1,6 +1,6 @@
 {% load static %}
 <nav class="relative bg-gray-900 border-b border-white/10 mb-8">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class=" max-w-8xl px-4 sm:px-6 lg:px-8">
         <div class="relative flex h-24 items-center justify-between">
 
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -13,7 +13,7 @@
                 </button>
             </div>
 
-            <div class="flex flex-1 items-center justify-center sm:items-center sm:justify-start">
+            <div class="flex flex-1 items-center justify-between  sm:items-center sm:justify-start">
                 <div class="flex shrink-0 items-center">
                     <img src="{% static 'images/logo.png' %}" alt="kevxpingu"
                         class="h-35 w-auto object-contain block" />
@@ -27,11 +27,21 @@
                         <a href="{% url 'products' %}"
                             class="rounded-md px-4 py-2 text-base font-semibold text-gray-300 hover:bg-white/5 hover:text-white transition-all">Products</a>
                     </div>
-                </div>
+                {% else %}
+                    <a class="rounded-md bg-gray-850/50 px-4 py-2 text-base font-semibold text-white"
+                        href="{% url 'account' %}">Settings</a>
                 {% endif %}
 
+                </div>
+
+                
+
                 <div class="flex space-x-8 text-gray-200">
+                    {% if request.user.is_staff %}
                     <p class="font-bold">Hello, {{request.user}}</p>
+                    {% else %}
+                    <p class="font-bold">Hello, {{request.user.customer}}</p>
+                    {% endif %}
                     <a class="font-bold" href="{% url 'logout'%}">Logout</a>
                 </div>
             </div>
